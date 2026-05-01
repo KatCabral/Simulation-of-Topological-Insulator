@@ -17,19 +17,19 @@ The Hamiltonian is constructed in k-space via Fourier transform from real-space 
 --------------------------
 **BiTeI_hr_triv.dat and BiTeI_hr_top.dat**
 
-The first line contains a single integer giving the total number of Wannier functions in the model. For example, a value of 18 means that each Hamiltonian matrix H(R) is 18 by 18.
+The first line contains a single integer giving the total number of Wannier functions in the model. For example, a value of 18 means that each Hamiltonian matrix `H(R)` is 18 by 18.
 
 The second line gives the total number of distinct lattice translation vectors R included in the model. For example, 1155 indicates that 1155 different R-vectors are stored in the file.
 
 The following section lists one integer per R-vector, giving the degeneracy (number of equivalent vectors related by symmetry) for each lattice translation. These integers are read sequentially, even though they may be written in rows for compactness.
 
-After the degeneracy list, the file contains the Hamiltonian matrix elements. Each line corresponds to one complex Hamiltonian element H_ij(R) and has the form:
+After the degeneracy list, the file contains the Hamiltonian matrix elements. Each line corresponds to one complex Hamiltonian element `H_ij(R)` and has the form:
 
         Rx Ry Rz i j Re(Hij) Im(Hij)
 
-Rx, Ry, and Rz are the integer components of the lattice vector R. i and j are the indices of the Wannier functions, ranging from 1 up to the total number given at the start of the file (18 in our example). Re(Hij) and Im(Hij) are the real and imaginary parts of the Hamiltonian matrix element connecting orbital i in the home cell to orbital j in the cell displaced by R. These H_ij(R) values represent the hopping parameters of the system: the strength and phase of the coupling between Wannier orbitals i and j separated by lattice vector R.
+`Rx`, `Ry`, and `Rz` are the integer components of the lattice vector `R`. `i` and `j` are the indices of the Wannier functions, ranging from 1 up to the total number given at the start of the file (18 in our example). `Re(Hij)` and `Im(Hij)` are the real and imaginary parts of the Hamiltonian matrix element connecting orbital `i` in the home cell to orbital j in the cell displaced by `R`. These `H_ij(R)` values represent the hopping parameters of the system: the strength and phase of the coupling between Wannier orbitals `i` and `j` separated by lattice vector `R`.
 
-The Hamiltonian is Hermitian, which means H_ij(R) = H_ji*(-R).
+The Hamiltonian is Hermitian, which means `H_ij(R) = H_ji*(-R)`.
 
 Each line therefore represents one element of the Hamiltonian for a particular lattice vector.
 
@@ -39,9 +39,9 @@ Real-space lattice vectors: Between begin real_lattice and end real_lattice, thr
 
 Reciprocal lattice vectors: Between begin recip_lattice and end recip_lattice, three lines list the reciprocal lattice vectors in inverse angstroms, used to convert real-space positions to k-space.
 
-K-points: Between begin kpoints and end, the first line gives the total number of k-points. Each following line lists one k-point as fractional coordinates (kx, ky, kz) in the reciprocal lattice. These points define where the Hamiltonian H(k) will be evaluated.
+K-points: Between begin kpoints and end, the first line gives the total number of k-points. Each following line lists one k-point as fractional coordinates `(kx, ky, kz)` in the reciprocal lattice. These points define where the Hamiltonian `H(k)` will be evaluated.
 
-The file is read sequentially by the Fortran program to extract lattice geometry, k-points, and calculation options for constructing H(k) from the real-space Hamiltonian H(R).
+The file is read sequentially by the Fortran program to extract lattice geometry, k-points, and calculation options for constructing `H(k)` from the real-space Hamiltonian `H(R)`.
 
 **Code Descripton and Running**
 ---------
@@ -58,9 +58,9 @@ The workflow is as follows:
 
 1. Read input Hamiltonians for trivial and topological phases.
 2. Define a k-path between high-symmetry points (L → A → H) in the Brillouin zone.
-3. Construct the k-space Hamiltonian via Fourier transform: H(k) = Σ_R H(R) e^(i k·R).
-4. Interpolate between the two phases using H_alpha = α H_top + (1 - α) H_triv, where α = 0.7754 simulates the critical intermediate phase.
-5. Diagonalise each H_alpha(k) with ZHEEV to obtain eigenvalues and eigenvectors.
+3. Construct the k-space Hamiltonian via Fourier transform: `H(k) = Σ_R H(R) e^(i k·R).`
+4. Interpolate between the two phases using `H_alpha = α H_top + (1 - α) H_triv`, where `α = 0.7754` simulates the critical intermediate phase.
+5. Diagonalise each `H_alpha(k)` with ZHEEV to obtain eigenvalues and eigenvectors.
 6. Calculate orbital projections for Bi, Te, and I orbitals, and write the results to several output files.
 
 Output files:
@@ -70,13 +70,13 @@ bandrgb.plt: Gnuplot script for plotting
 bandrgb.pdf: generated band structure plot
 
 To compile the program, ensure LAPACK and BLAS are installed and run:
-gfortran Wannier_band_structure.f90 -llapack -lblas -o Wannier_band_structure
+`gfortran Wannier_band_structure.f90 -llapack -lblas -o Wannier_band_structure`
 
 Then execute:
-./Wannier_band_structure
+`./Wannier_band_structure`
 
 To generate the band structure plot, run:
-gnuplot bandrgb.plt
+`gnuplot bandrgb.plt`
 
 
 
