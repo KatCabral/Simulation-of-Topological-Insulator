@@ -25,7 +25,7 @@ The following section lists one integer per R-vector, giving the degeneracy (num
 
 After the degeneracy list, the file contains the Hamiltonian matrix elements. Each line corresponds to one complex Hamiltonian element `H_ij(R)` and has the form:
 
-        Rx Ry Rz i j Re(Hij) Im(Hij)
+        Rx Ry Rz i j Re(H_ij) Im(H_ij)
 
 `Rx`, `Ry`, and `Rz` are the integer components of the lattice vector `R`. `i` and `j` are the indices of the Wannier functions, ranging from 1 up to the total number given at the start of the file (18 in our example). `Re(Hij)` and `Im(Hij)` are the real and imaginary parts of the Hamiltonian matrix element connecting orbital `i` in the home cell to orbital j in the cell displaced by `R`. These `H_ij(R)` values represent the hopping parameters of the system: the strength and phase of the coupling between Wannier orbitals `i` and `j` separated by lattice vector `R`.
 
