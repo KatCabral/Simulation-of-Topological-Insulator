@@ -80,6 +80,6 @@ To generate the band structure plot, run:
 
 
 
-**Notes:** The prefix variable in the code (character(len=80):: prefix="BiTeI") can be changed to use a different material. The interpolation factor alpha controls how “topological” the phase is. The default k-path follows L → A → H in the hexagonal Brillouin zone. For spin-polarised or 3D band plots, the output can be extended and visualised with Python or Matplotlib.
+**Notes:** The prefix variable in the code `(character(len=80):: prefix="BiTeI")` can be changed to use a different material. The interpolation factor alpha controls how “topological” the phase is. The default k-path follows L → A → H in the hexagonal Brillouin zone. For spin-polarised or 3D band plots, the output can be extended and visualised with Python or Matplotlib.
 
 This project simulates surface state effects and band inversion across a topological transition in BiTeI, using tight-binding models and LAPACK-based eigenvalue solvers. It was developed as part of an MPhys research project at the University of Manchester, focusing on computational modelling of topological insulators and Rashba systems.
