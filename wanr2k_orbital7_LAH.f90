@@ -1,6 +1,6 @@
       Program Wannier_band_structure      
       Implicit None
-!--------to be midified by the usere
+!--------to be modified by the user
       character(len=80):: prefix="BiTeI"
       integer,parameter::nkpath=3,np=1000
       !real*8,parameter::ef= 4.18903772
